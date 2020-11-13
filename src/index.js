@@ -13,7 +13,9 @@ if (!dbExists) {
     db.serialize(() => {
         db
             .run('CREATE TABLE Recipes (username TEXT PRIMARY KEY, password TEXT, data TEXT)')
-            .run(`INSERT INTO Recipes (username, password) VALUES ('__public__', '__public__')`);
+            .run(`INSERT INTO Recipes (username, password, data) VALUES ('__public__', '__public__', ?)`, [
+                '[{"name":"Chinese Chicken","description":"Chinese Chicken with sweet and sour sauce","imagePath":"https://s-media-cache-ak0.pinimg.com/originals/63/6d/8d/636d8d6cfbf1862e5ad5f89571c55430.jpg","ingredients":[{"name":"Chicken Portions","amount":4},{"name":"Chinese spices","amount":1}]},{"name":"Sausage Casserole","description":"Sausage Casserole with onion gravy","imagePath":"http://d3udvtnhu4gqbm.cloudfront.net/wp-content/uploads/Italian-Sausage.jpg","ingredients":[{"name":"Sausages","amount":6},{"name":"Onions","amount":2}]},{"name":"Taco Meat Recipe","description":"Taco with minced beef and onion","imagePath":"https://www.sheknows.com/wp-content/uploads/2018/08/otylyq1cjh6jobdrg0q5.jpeg","ingredients":[{"name":"Minced Beef","amount":2},{"name":"Onions","amount":2}]},{"name":"Egg delight","description":"Lightly toasted wraps with fresh eggs","imagePath":"https://www.sheknows.com/wp-content/uploads/2018/08/ivenjnophdgmridughl3.jpeg","ingredients":[{"name":"Eggs","amount":6},{"name":"Wraps","amount":2},{"name":"Cheese","amount":1}]},{"name":"Fried EggPlant","description":"Eggplant daked with cheese","imagePath":"https://i.ytimg.com/vi/VGSc5WIljb0/maxresdefault.jpg","ingredients":[{"name":"Aubergine","amount":6},{"name":"Cheese","amount":2}]}]'
+            ]);
     });
 }
 
